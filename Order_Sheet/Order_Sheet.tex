@@ -1,0 +1,96 @@
+\documentclass[hidelinks,12pt,a4paper]{article}
+\usepackage[italian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fourier} 
+
+% Images
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\graphicspath{ {../Images} }
+
+% Background page image.
+\usepackage{eso-pic}
+%\usepackage[top=2cm, bottom=2cm, outer=0cm, inner=0cm]{geometry}
+\usepackage[top=1cm, bottom=1cm, outer=0cm, inner=0cm]{geometry}
+
+% To color text parts
+\usepackage{xcolor}
+
+% Minipages in the same line
+\usepackage{tabularx}
+
+% Create minipage border.
+\usepackage{tikz}
+
+% License
+\usepackage[
+type={CC},
+modifier={by-nc-sa},
+version={4.0},
+]{doclicense}
+
+\usepackage{tikz}
+\usepackage[framemethod=TikZ]{mdframed}
+\newmdenv[tikzsetting={draw=black, line width=6pt}, backgroundcolor=none]{roundCornerPage}
+%---------------------------------------------------------------------
+
+\newcommand{\backGroundImage}{
+% Path/image to include
+example-image
+}
+
+\newcommand{\orderSheet}{
+	
+	\begin{center}
+		\begin{minipage}{0.9\textwidth}
+				\begin{roundCornerPage}[roundcorner=15pt]
+					\begin{minipage}[t][0.7\textwidth][t]{\textwidth}
+						contenuto...
+					\end{minipage}
+				\end{roundCornerPage}	
+		\end{minipage}
+	\end{center}
+
+	%	\begin{minipage}[t][8.3cm][t]{8.9cm}
+		%	contenuto...
+		%\end{minipage}
+}
+
+%---------------------------------------------------------------------
+\begin{document}
+	
+	% Remove page number
+	\pagestyle{empty}
+	
+	\title{\textbf{Foglio per le ordinazioni al ristorante cinese/giapponese}}
+	\author{Francesco Rombaldoni}
+	\date{}
+	
+	\maketitle
+	\newpage
+	
+	%================%
+	
+	\AddToShipoutPictureBG*{\includegraphics[width=\paperwidth,height=\paperheight]{\backGroundImage}}
+	
+%	\newgeometry{top=0.5cm, bottom=0.5cm}
+	
+	\orderSheet
+	\vspace*{5mm}
+	\orderSheet
+	
+	%================%
+	
+	\newpage
+	\newgeometry{top=2cm, bottom=2cm}
+	\vspace*{\fill}
+	% Print license
+	\begin{center}
+		\begin{minipage}{0.8\linewidth}
+			\doclicenseThis
+		\end{minipage}
+	\end{center}
+	
+\end{document}
