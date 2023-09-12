@@ -21,8 +21,16 @@
 % Minipages in the same line
 \usepackage{tabularx}
 
-% Create minipage border.
+% Create page border 
 \usepackage{tikz}
+\usepackage[framemethod=TikZ]{mdframed}
+\newmdenv[tikzsetting={draw=black, line width=6pt}, backgroundcolor=none]{roundCornerPage}
+
+% Create dashed box
+\usepackage{adjustbox}
+\usepackage{dashbox}
+
+\usepackage{changepage}
 
 % License
 \usepackage[
@@ -31,9 +39,6 @@ modifier={by-nc-sa},
 version={4.0},
 ]{doclicense}
 
-\usepackage{tikz}
-\usepackage[framemethod=TikZ]{mdframed}
-\newmdenv[tikzsetting={draw=black, line width=6pt}, backgroundcolor=none]{roundCornerPage}
 %---------------------------------------------------------------------
 
 \newcommand{\backGroundImage}{
@@ -44,18 +49,39 @@ example-image
 \newcommand{\orderSheet}{
 	
 	\begin{center}
-		\begin{minipage}{0.9\textwidth}
+		\fboxrule=2pt
+		\begin{adjustbox}{minipage=0.9\textwidth,precode=\dbox}
 				\begin{roundCornerPage}[roundcorner=15pt]
 					\begin{minipage}[t][0.7\textwidth][t]{\textwidth}
-						contenuto...
+						
+							\begin{minipage}[t][0.15\textwidth][t]{\textwidth}
+									\begin{tabularx}{\textwidth}{XXX}
+										{
+											%Table informations
+											\begin{adjustwidth}{-1cm}{}
+											\begin{itemize}
+												\item[] Numero tavolo: \rule{8mm}{0.15mm}
+												\item[] Numero persone: \rule{8mm}{0.15mm}
+											\end{itemize}
+										\end{adjustwidth}
+											
+										}&{
+											%Restaurant logo
+										
+										}&{
+											% Menu informations
+											
+										}
+									\end{tabularx}
+							\end{minipage}
+							
+							Qui è dove voglio tirare la linea di separazione
 					\end{minipage}
-				\end{roundCornerPage}	
-		\end{minipage}
+				\end{roundCornerPage}
+		\end{adjustbox}
 	\end{center}
 
-	%	\begin{minipage}[t][8.3cm][t]{8.9cm}
-		%	contenuto...
-		%\end{minipage}
+	
 }
 
 %---------------------------------------------------------------------
