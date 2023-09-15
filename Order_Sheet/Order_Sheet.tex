@@ -32,6 +32,10 @@
 
 \usepackage{changepage}
 
+%For testing purpose
+%\usepackage{lipsum}
+%\lipsum[1]
+
 % License
 \usepackage[
 type={CC},
@@ -41,10 +45,11 @@ version={4.0},
 
 %---------------------------------------------------------------------
 
-\newcommand{\backGroundImage}{
-% Path/image to include
-example-image
-}
+%Set background image
+\newcommand{\backGroundImage}{\includegraphics[width=\paperwidth,height=\paperheight]{example-image}}
+
+% Set circular logo image
+\newcommand{\logoImage}{\includegraphics[]{example-image-duck}}
 
 \newcommand{\orderSheet}{
 	
@@ -55,24 +60,34 @@ example-image
 					\begin{minipage}[t][0.7\textwidth][t]{\textwidth}
 						
 							\begin{minipage}[t][0.15\textwidth][t]{\textwidth}
-									\begin{tabularx}{\textwidth}{XXX}
-										{
-											%Table informations
-											\begin{adjustwidth}{-1cm}{}
-											\begin{itemize}
-												\item[] Numero tavolo: \rule{8mm}{0.15mm}
-												\item[] Numero persone: \rule{8mm}{0.15mm}
-											\end{itemize}
-										\end{adjustwidth}
-											
-										}&{
-											%Restaurant logo
+							\begin{tabularx}{\textwidth}{XXX}
+								{
+									%Table informations
+									\begin{adjustwidth}{-1cm}{}
+										\begin{itemize}
+											\item[] Numero tavolo: \rule{8mm}{0.15mm}
+											\item[] Numero persone: \rule{8mm}{0.15mm}
+										\end{itemize}
+									\end{adjustwidth}
+									
+								}&{
+									%Restaurant logo
+									\begin{center}
+											\begin{adjustwidth}{-0.5cm}{}
+												\vspace*{-1.5cm}
+												\begin{tikzpicture}
+													\clip (0,0) circle (1cm) node {\logoImage};
+												\end{tikzpicture}
+											\end{adjustwidth}
+									\end{center}
 										
-										}&{
-											% Menu informations
-											
-										}
-									\end{tabularx}
+								}&{
+									% Menu informations
+									\begin{itemize}
+										\item[] Some words.
+									\end{itemize}
+								}
+							\end{tabularx}
 							\end{minipage}
 							
 							Qui è dove voglio tirare la linea di separazione
@@ -99,9 +114,7 @@ example-image
 	
 	%================%
 	
-	\AddToShipoutPictureBG*{\includegraphics[width=\paperwidth,height=\paperheight]{\backGroundImage}}
-	
-%	\newgeometry{top=0.5cm, bottom=0.5cm}
+	\AddToShipoutPictureBG*{\backGroundImage}
 	
 	\orderSheet
 	\vspace*{5mm}
