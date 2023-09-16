@@ -32,9 +32,14 @@
 
 \usepackage{changepage}
 
-%For testing purpose
-%\usepackage{lipsum}
-%\lipsum[1]
+% for dummy text
+\usepackage{lipsum} 
+
+%To repeat a sentence n times
+\usepackage{expl3}
+\ExplSyntaxOn
+\cs_new_eq:NN \Repeat \prg_replicate:nn
+\ExplSyntaxOff
 
 % License
 \usepackage[
@@ -45,14 +50,35 @@ version={4.0},
 
 %---------------------------------------------------------------------
 
-%Set background image
-\newcommand{\backGroundImage}{\includegraphics[width=\paperwidth,height=\paperheight]{example-image}}
+%%%%% Set background image %%%%%  
+\newcommand{\backGroundImage}{\includegraphics[width=\paperwidth,height=\paperheight]{Background.jpg}}
+%%%%% 
 
-% Set circular logo image
-\newcommand{\logoImage}{\includegraphics[]{example-image-duck}}
+%%%%%  Set circular logo image %%%%% 
+\newcommand{\logoImage}{\includegraphics[scale=0.20]{SushiKanji.jpg}}
+%%%%% Center logo manually %%%%%
+% - Horizontal center -> adjustwidth enviroment 
+\newcommand{\rightMargin}{0mm}
+\newcommand{\leftMargin}{0.6cm}
+% - Vertical center 
+\newcommand{\vertical}{-0.8cm}
 
-\newcommand{\orderSheet}{
+%%%%% Set description text %%%%%
+\newcommand{\Description}{\scriptsize{\lipsum[1][1-5]}}
+%%%%%
+
+%Order part structure
+\newcommand{\orderPart}{
+	\begin{tabular}{ c c c }
+		\scriptsize{\textbf{N.Piatto}} & \scriptsize{\textbf{Quantità}} & \scriptsize{\textbf{Annotazioni}}\\
+		\Repeat{15}{\rule{10mm}{0.30mm} & \rule{10mm}{0.30mm} & \rule{18mm}{0.30mm}\\}
+		
+	\end{tabular}
 	
+}
+
+% Order sheet structure
+\newcommand{\orderSheet}{
 	\begin{center}
 		\fboxrule=2pt
 		\begin{adjustbox}{minipage=0.9\textwidth,precode=\dbox}
@@ -65,43 +91,56 @@ version={4.0},
 									%Table informations
 									\begin{adjustwidth}{-1cm}{}
 										\begin{itemize}
-											\item[] Numero tavolo: \rule{8mm}{0.15mm}
-											\item[] Numero persone: \rule{8mm}{0.15mm}
+											\item[] \textbf{Numero tavolo: \rule{8mm}{0.30mm}}
+											\item[] \textbf{Numero persone: \rule{8mm}{0.30mm}}
 										\end{itemize}
 									\end{adjustwidth}
-									
 								}&{
 									%Restaurant logo
 									\begin{center}
-											\begin{adjustwidth}{-0.5cm}{}
-												\vspace*{-1.5cm}
+											\begin{adjustwidth}{\leftMargin}{\rightMargin}
+												\vspace*{\vertical}
 												\begin{tikzpicture}
-													\clip (0,0) circle (1cm) node {\logoImage};
+													\clip (0,0) circle (1.5cm) node {\logoImage};
 												\end{tikzpicture}
 											\end{adjustwidth}
 									\end{center}
-										
 								}&{
 									% Menu informations
-									\begin{itemize}
-										\item[] Some words.
-									\end{itemize}
+									\raggedright{\textbf{\Description}}
 								}
 							\end{tabularx}
 							\end{minipage}
 							
-							Qui è dove voglio tirare la linea di separazione
+							\vspace*{5mm}
+							\noindent\tikz\draw[line width=4pt, line cap=round, black!80] 
+							(0,0) -- node[] {} (\linewidth,0);
+							
+							% Startig body part
+							\begin{minipage}{\textwidth}
+								\begin{tabularx}{\textwidth}{XXX}
+									{
+										\begin{center}
+												\orderPart
+										\end{center}
+									}&{
+										\begin{center}
+											\orderPart
+										\end{center}
+									}&{
+										\begin{center}
+											\orderPart
+										\end{center}
+									}
+								\end{tabularx}
+							\end{minipage}
 					\end{minipage}
 				\end{roundCornerPage}
 		\end{adjustbox}
 	\end{center}
-
-	
 }
 
-%---------------------------------------------------------------------
 \begin{document}
-	
 	% Remove page number
 	\pagestyle{empty}
 	
@@ -112,15 +151,11 @@ version={4.0},
 	\maketitle
 	\newpage
 	
-	%================%
-	
 	\AddToShipoutPictureBG*{\backGroundImage}
 	
 	\orderSheet
 	\vspace*{5mm}
 	\orderSheet
-	
-	%================%
 	
 	\newpage
 	\newgeometry{top=2cm, bottom=2cm}
