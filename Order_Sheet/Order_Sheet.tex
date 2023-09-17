@@ -51,7 +51,7 @@ version={4.0},
 %---------------------------------------------------------------------
 
 %%%%% Set background image %%%%%  
-\newcommand{\backGroundImage}{\includegraphics[width=\paperwidth,height=\paperheight]{Background.jpg}}
+\newcommand{\backGroundImage}{\includegraphics[width=\paperwidth,height=\paperheight]{Background-2.jpg}}
 %%%%% 
 
 %%%%%  Set circular logo image %%%%% 
@@ -69,12 +69,17 @@ version={4.0},
 
 %Order part structure
 \newcommand{\orderPart}{
-	\begin{tabular}{ c c c }
-		\scriptsize{\textbf{N.Piatto}} & \scriptsize{\textbf{Quantità}} & \scriptsize{\textbf{Annotazioni}}\\
-		\Repeat{15}{\rule{10mm}{0.30mm} & \rule{10mm}{0.30mm} & \rule{18mm}{0.30mm}\\}
-		
-	\end{tabular}
 	
+	%Uncomment this part and comment lower code to have annotations column
+%	\begin{tabular}{ c c c }
+%		\scriptsize{\textbf{N.Piatto}} & \scriptsize{\textbf{Quantità}} & \scriptsize{\textbf{Annotazioni}}\\
+%		\Repeat{15}{\rule{10mm}{0.30mm} & \rule{10mm}{0.30mm} & \rule{18mm}{0.30mm}\\}
+%	\end{tabular}
+
+	\begin{tabular}{ c c  }
+			\scriptsize{\textbf{N.Piatto}} & \scriptsize{\textbf{Quantità}}\\
+			\Repeat{15}{\rule{10mm}{0.30mm} & \rule{10mm}{0.35mm}\\}
+		\end{tabular}	
 }
 
 % Order sheet structure
@@ -91,8 +96,8 @@ version={4.0},
 									%Table informations
 									\begin{adjustwidth}{-1cm}{}
 										\begin{itemize}
-											\item[] \textbf{Numero tavolo: \rule{8mm}{0.30mm}}
-											\item[] \textbf{Numero persone: \rule{8mm}{0.30mm}}
+											\item[] \textbf{Numero tavolo: \rule{8mm}{0.35mm}}
+											\item[] \textbf{Numero persone: \rule{8mm}{0.35mm}}
 										\end{itemize}
 									\end{adjustwidth}
 								}&{
@@ -113,26 +118,49 @@ version={4.0},
 							\end{minipage}
 							
 							\vspace*{5mm}
+							\hspace*{-1.5mm}
 							\noindent\tikz\draw[line width=4pt, line cap=round, black!80] 
 							(0,0) -- node[] {} (\linewidth,0);
 							
 							% Startig body part
 							\begin{minipage}{\textwidth}
-								\begin{tabularx}{\textwidth}{XXX}
-									{
-										\begin{center}
+								
+								%Uncomment this part and comment lower code to have annotations column
+							%	\begin{tabularx}{\textwidth}{XXX}
+							%		{
+							%			\begin{center}
+							%					\orderPart
+							%			\end{center}
+							%		}&{
+							%			\begin{center}
+							%				\orderPart
+							%			\end{center}
+							%		}&{
+							%			\begin{center}
+							%				\orderPart
+							%			\end{center}
+							%		}
+							%	\end{tabularx}
+							
+								\begin{tabularx}{\textwidth}{XXXX}
+										{
+												\begin{center}
+															\orderPart
+													\end{center}
+											}&{
+												\begin{center}
+														\orderPart
+													\end{center}
+											}&{
+												\begin{center}
+														\orderPart
+													\end{center}
+											}&{
+											\begin{center}
 												\orderPart
-										\end{center}
-									}&{
-										\begin{center}
-											\orderPart
-										\end{center}
-									}&{
-										\begin{center}
-											\orderPart
-										\end{center}
-									}
-								\end{tabularx}
+											\end{center}
+											}
+									\end{tabularx}
 							\end{minipage}
 					\end{minipage}
 				\end{roundCornerPage}
