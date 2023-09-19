@@ -4,8 +4,7 @@ Contributing
 👍🎉 Thanks a lot for considering contributing 🎉👍
 
 We welcome and encourage contribution. There is many way to contribute: you can
-write bug report, contribute code or documentation (take a look at the
-[Wiki section](https://github.com/gsilano/EuropeCV/wiki)).
+write bug report, contribute code or documentation.
 
 Working on your first Pull Request?  
 -----------------------------------
@@ -44,7 +43,7 @@ If the change is big, typically if the change span to more than one file, consid
 This will makes it much easier to make the change fit well into the package.
 
 There is some basic requirement for us to merge a pull request:
--   Describe the change (a bot will remind you in case you forget it)
+-   Describe the change
 -   Refer to any issues it effects
 -   Separate one pull request per functionality: if you start writing "and" in the feature description consider if it could be
  separated in two pull requests.
