@@ -41,6 +41,9 @@
 \cs_new_eq:NN \Repeat \prg_replicate:nn
 \ExplSyntaxOff
 
+% To have conditional text
+\usepackage{ifthen}
+
 % License
 \usepackage[
 type={CC},
@@ -49,6 +52,10 @@ version={4.0},
 ]{doclicense}
 
 %---------------------------------------------------------------------
+
+%%%%% Set this value true to have annotation column in order part %%%%% 
+\newbool{annotationClumn}
+\setbool{annotationClumn}{false} 
 
 %%%%% Set background image %%%%%  
 \newcommand{\backGroundImage}{\includegraphics[width=\paperwidth,height=\paperheight]{Background-2.jpg}}
@@ -63,23 +70,47 @@ version={4.0},
 % - Vertical center 
 \newcommand{\vertical}{-0.8cm}
 
+%%%%% Set table number text %%%%%
+\newcommand{\tableNumberT}{Numero tavolo: }
+%%%%%
+
+%%%%% Set number of persons text %%%%%
+\newcommand{\numberPersonsT}{Numero persone: }
+%%%%%
+
 %%%%% Set description text %%%%%
 \newcommand{\Description}{\scriptsize{\lipsum[1][1-5]}}
+%%%%%
+
+%%%%% Set dish number text %%%%%
+\newcommand{\dishNumberT}{N.Piatto}
+%%%%%
+
+%%%%% Set portions number text %%%%%
+\newcommand{\portionsNumberT}{Quantità}
+%%%%%
+
+%%%%% Set annotation text %%%%%
+\newcommand{\annotationT}{Annotazioni}
 %%%%%
 
 %Order part structure
 \newcommand{\orderPart}{
 	
-	%Uncomment this part and comment lower code to have annotations column
-%	\begin{tabular}{ c c c }
-%		\scriptsize{\textbf{N.Piatto}} & \scriptsize{\textbf{Quantità}} & \scriptsize{\textbf{Annotazioni}}\\
-%		\Repeat{15}{\rule{10mm}{0.30mm} & \rule{10mm}{0.30mm} & \rule{18mm}{0.30mm}\\}
-%	\end{tabular}
-
-	\begin{tabular}{ c c  }
-			\scriptsize{\textbf{N.Piatto}} & \scriptsize{\textbf{Quantità}}\\
+	\ifthenelse{\boolean{annotationClumn}}
+	{
+		\begin{tabular}{ c c c }
+				\scriptsize{\textbf{\dishNumberT}} & \scriptsize{\textbf{\portionsNumberT}} & \scriptsize{\textbf{\annotationT}}\\
+				\Repeat{15}{\rule{10mm}{0.30mm} & \rule{10mm}{0.30mm} & \rule{18mm}{0.30mm}\\}
+		\end{tabular}
+	}
+	{
+		\begin{tabular}{ c c  }
+			\scriptsize{\textbf{\dishNumberT}} & \scriptsize{\textbf{\portionsNumberT}}\\
 			\Repeat{15}{\rule{10mm}{0.30mm} & \rule{10mm}{0.35mm}\\}
 		\end{tabular}	
+	}
+	
 }
 
 % Order sheet structure
@@ -96,8 +127,8 @@ version={4.0},
 									%Table informations
 									\begin{adjustwidth}{-1cm}{}
 										\begin{itemize}
-											\item[] \textbf{Numero tavolo: \rule{8mm}{0.35mm}}
-											\item[] \textbf{Numero persone: \rule{8mm}{0.35mm}}
+											\item[] \textbf{\tableNumberT \rule{8mm}{0.35mm}}
+											\item[] \textbf{\numberPersonsT \rule{8mm}{0.35mm}}
 										\end{itemize}
 									\end{adjustwidth}
 								}&{
@@ -125,42 +156,45 @@ version={4.0},
 							% Startig body part
 							\begin{minipage}{\textwidth}
 								
-								%Uncomment this part and comment lower code to have annotations column
-							%	\begin{tabularx}{\textwidth}{XXX}
-							%		{
-							%			\begin{center}
-							%					\orderPart
-							%			\end{center}
-							%		}&{
-							%			\begin{center}
-							%				\orderPart
-							%			\end{center}
-							%		}&{
-							%			\begin{center}
-							%				\orderPart
-							%			\end{center}
-							%		}
-							%	\end{tabularx}
-							
-								\begin{tabularx}{\textwidth}{XXXX}
-										{
-												\begin{center}
+									\ifthenelse{\boolean{annotationClumn}}
+									{
+											\begin{tabularx}{\textwidth}{XXX}
+													{
+														\begin{center}
+																\orderPart
+														\end{center}
+													}&{
+														\begin{center}
 															\orderPart
-													\end{center}
+														\end{center}
+													}&{
+														\begin{center}
+															\orderPart
+														\end{center}
+													}
+											\end{tabularx}
+									}
+									{
+											\begin{tabularx}{\textwidth}{XXXX}
+											{
+												\begin{center}
+													\orderPart
+												\end{center}
 											}&{
 												\begin{center}
-														\orderPart
-													\end{center}
+													\orderPart
+												\end{center}
 											}&{
 												\begin{center}
-														\orderPart
-													\end{center}
+													\orderPart
+												\end{center}
 											}&{
-											\begin{center}
-												\orderPart
-											\end{center}
+												\begin{center}
+													\orderPart
+												\end{center}
 											}
-									\end{tabularx}
+										\end{tabularx}
+									}
 							\end{minipage}
 					\end{minipage}
 				\end{roundCornerPage}
