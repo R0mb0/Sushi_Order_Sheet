@@ -12,9 +12,9 @@
 1.  Fork this repository.
 2.  Rename the repository as you want and change the description then Fork it!
 3.  Upload your images using GitHub into the images folder!
-   1.   Access the folder from main page.
-   2.   "Add file" -> "Upload files" -> drag and drop your images here.
-   3.   At the end, "Commit changes".
+   1.  Access the folder from main page.
+   2.  "Add file" -> "Upload files" -> drag and drop your images here.
+   3.  At the end, "Commit changes".
 4.  Overwrite demo images with yours into the LaTeX document (if necessary change the parameters down the images names to center its).
    1. Access the "Order_Sheet" folder from main page and click on "Order_Sheet.tex".
    2. Now click on "Edit this file" (the pencil on top right).
