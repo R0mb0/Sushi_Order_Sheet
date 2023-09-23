@@ -14,14 +14,15 @@
    1. Access the folder from main page.
    2. "Add file" -> "Upload files" -> drag and drop your images here.
    3. At the end, "Commit changes".
-4. Overwrite demo images with yours into the LaTeX document.
+4. Overwrite demo images with yours into the LaTeX document (if necessary change the parameters down the images names to center its).
    1.  Access the "Order_Sheet" folder from main page and click on "Order_Sheet.tex".
    2.  Now click on "Edit this file" (the pencil on top right).
    3.  Overwrite demo backgrund image with your own (around code line 61).
-   4.  Do the same with the circular logo (around code line 65)
-   5.  Now "Commit chages"
+   4.  Do the same with the circular logo (around code line 65).
+   5.  If you want the "annotation column" in document, set "annotationColumn" variable (around code line 58) to "true".
+   6.  Now "Commit chages".
 5. Wait 2 minutes, got to "Actions" -> "Compile" -> click on the last one (look at the date on right) -> scroll down the page and click on "artifact file".
-6. Done! now you have your suhi order sheet
+6. Done! now you have your suhi order sheet.
 
 ---
 
