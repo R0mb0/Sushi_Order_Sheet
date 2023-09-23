@@ -54,8 +54,9 @@ version={4.0},
 %---------------------------------------------------------------------
 
 %%%%% Set this value true to have annotation column in order part %%%%% 
-\newbool{annotationClumn}
-\setbool{annotationClumn}{false} 
+\newbool{annotationColumn}
+\setbool{annotationColumn}{false}
+%%%%% 
 
 %%%%% Set background image %%%%%  
 \newcommand{\backGroundImage}{\includegraphics[width=\paperwidth,height=\paperheight]{Background-2.jpg}}
@@ -69,6 +70,7 @@ version={4.0},
 \newcommand{\leftMargin}{0.6cm}
 % - Vertical center 
 \newcommand{\vertical}{-0.8cm}
+%%%%% 
 
 %%%%% Set table number text %%%%%
 \newcommand{\tableNumberT}{Numero tavolo: }
@@ -97,7 +99,7 @@ version={4.0},
 %Order part structure
 \newcommand{\orderPart}{
 	
-	\ifthenelse{\boolean{annotationClumn}}
+	\ifthenelse{\boolean{annotationColumn}}
 	{
 		\begin{tabular}{ c c c }
 				\scriptsize{\textbf{\dishNumberT}} & \scriptsize{\textbf{\portionsNumberT}} & \scriptsize{\textbf{\annotationT}}\\
@@ -156,7 +158,7 @@ version={4.0},
 							% Startig body part
 							\begin{minipage}{\textwidth}
 								
-									\ifthenelse{\boolean{annotationClumn}}
+									\ifthenelse{\boolean{annotationColumn}}
 									{
 											\begin{tabularx}{\textwidth}{XXX}
 													{
