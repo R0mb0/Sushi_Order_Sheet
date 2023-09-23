@@ -1,6 +1,7 @@
 # Latex template to create a sushi order sheet
 [![made-with-latex](https://img.shields.io/badge/Made%20with-LaTeX-1f425f.svg)](https://www.latex-project.org/)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/5386565587824f159238f15e7043687c)](https://app.codacy.com/gh/R0mb0/Sushi_Order_Sheet/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+[![Compilation_Test](https://github.com/R0mb0/Sushi_Order_Sheet/actions/workflows/Compilation_Test.yml/badge.svg)](https://github.com/R0mb0/Sushi_Order_Sheet/actions/workflows/Compilation_Test.yml)
 
 ### Demo images:
 - ![With_annotation_column](https://github.com/R0mb0/Sushi_Order_Sheet/blob/main/ReadMe_Images/With_annotation_column.png)
