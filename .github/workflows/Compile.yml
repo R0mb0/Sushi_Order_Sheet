@@ -1,0 +1,21 @@
+name: Compile
+on:
+  push:
+    branches:
+      - 'main'
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download repo files
+        uses: actions/checkout@v4.0.0
+      - name: Compile files
+        uses: xu-cheng/latex-action@v3
+        with:
+          working_directory: Order_Sheet
+          root_file: Order_Sheet.tex
+      - name: Upload compiled file
+        uses: actions/upload-artifact@v3
+        with: 
+          name: Order_Sheet
+          path: Order_Sheet/Order_Sheet.pdf
