@@ -1,4 +1,4 @@
-name: Compile
+name: Compiling_Test
 on:
   push:
     branches:
