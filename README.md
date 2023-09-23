@@ -9,9 +9,9 @@
 
 ---
 ## How to create your personal sushi order sheet online for free! 
-1. Fork this repository.
-2. Rename the repository as you want and change the description then Fork it!
-3. Upload your images using GitHub into the images folder!
+1.  Fork this repository.
+2.  Rename the repository as you want and change the description then Fork it!
+3.  Upload your images using GitHub into the images folder!
    1.  Access the folder from main page.
    2.  "Add file" -> "Upload files" -> drag and drop your images here.
    3.  At the end, "Commit changes".
@@ -22,8 +22,8 @@
    4.  Do the same with the circular logo (around code line 65).
    5.  If you want the "annotation column" in document, set "annotationColumn" variable (around code line 58) to "true".
    6.  Now "Commit chages".
-5. Wait 2 minutes, got to "Actions" -> "Compile" -> click on the last one (look at the date on right) -> scroll down the page and click on "artifact file".  
-6. Done! now you have your suhi order sheet.
+5.  Wait 2 minutes, got to "Actions" -> "Compile" -> click on the last one (look at the date on right) -> scroll down the page and click on "artifact file".  
+6.  Done! now you have your suhi order sheet.
 
 ---
 
