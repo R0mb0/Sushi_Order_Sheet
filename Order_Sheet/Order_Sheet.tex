@@ -1,7 +1,235 @@
-\documentclass[12pt]{article}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\begin{document}
+\documentclass[hidelinks,12pt,a4paper]{article}
+\usepackage[italian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fourier} 
+
+% Images
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\graphicspath{ {../Images} }
+
+% Background page image.
+\usepackage{eso-pic}
+%\usepackage[top=2cm, bottom=2cm, outer=0cm, inner=0cm]{geometry}
+\usepackage[top=1cm, bottom=1cm, outer=0cm, inner=0cm]{geometry}
+
+% To color text parts
+\usepackage{xcolor}
+
+% Minipages in the same line
+\usepackage{tabularx}
+
+% Create page border 
+\usepackage{tikz}
+\usepackage[framemethod=TikZ]{mdframed}
+\newmdenv[tikzsetting={draw=black, line width=6pt}, backgroundcolor=none]{roundCornerPage}
+
+% Create dashed box
+\usepackage{adjustbox}
+\usepackage{dashbox}
+
+% Adjust margins
+\usepackage{changepage}
+
+% Dummy text
+\usepackage{lipsum} 
+
+%To repeat a sentence n times
+\usepackage{expl3}
+\ExplSyntaxOn
+\cs_new_eq:NN \Repeat \prg_replicate:nn
+\ExplSyntaxOff
+
+% To have conditional text
+\usepackage{ifthen}
+
+% License
+\usepackage[
+type={CC},
+modifier={by-nc-sa},
+version={4.0},
+]{doclicense}
+
+%---------------------------------------------------------------------
+
+%%%%% Set this value true to have annotation column in order part %%%%% 
+\newbool{annotationColumn}
+\setbool{annotationColumn}{false}
+%%%%% 
+
+%%%%% Set background image %%%%%  
+\newcommand{\backGroundImage}{\includegraphics[width=\paperwidth,height=\paperheight]{Background-2.jpg}}
+%%%%% 
+
+%%%%%  Set circular logo image %%%%% 
+\newcommand{\logoImage}{\includegraphics[scale=0.20]{SushiKanji.jpg}}
+%%%%% Center logo manually %%%%%
+% - Horizontal center -> adjustwidth enviroment 
+\newcommand{\rightMargin}{0mm}
+\newcommand{\leftMargin}{0.6cm}
+% - Vertical center 
+\newcommand{\vertical}{-0.8cm}
+%%%%% 
+
+%%%%% Set table number text %%%%%
+\newcommand{\tableNumberT}{Numero tavolo: }
+%%%%%
+
+%%%%% Set number of persons text %%%%%
+\newcommand{\numberPersonsT}{Numero persone: }
+%%%%%
+
+%%%%% Set description text %%%%%
+\newcommand{\Description}{\scriptsize{\lipsum[1][1-5]}}
+%%%%%
+
+%%%%% Set dish number text %%%%%
+\newcommand{\dishNumberT}{N.Piatto}
+%%%%%
+
+%%%%% Set portions number text %%%%%
+\newcommand{\portionsNumberT}{Quantità}
+%%%%%
+
+%%%%% Set annotation text %%%%%
+\newcommand{\annotationT}{Annotazioni}
+%%%%%
+
+%Order part structure
+\newcommand{\orderPart}{
 	
-	$\mathfrak{H}$ello world!
+	\ifthenelse{\boolean{annotationColumn}}
+	{
+		\begin{tabular}{ c c c }
+				\scriptsize{\textbf{\dishNumberT}} & \scriptsize{\textbf{\portionsNumberT}} & \scriptsize{\textbf{\annotationT}}\\
+				\Repeat{15}{\rule{10mm}{0.30mm} & \rule{10mm}{0.30mm} & \rule{18mm}{0.30mm}\\}
+		\end{tabular}
+	}
+	{
+		\begin{tabular}{ c c  }
+			\scriptsize{\textbf{\dishNumberT}} & \scriptsize{\textbf{\portionsNumberT}}\\
+			\Repeat{15}{\rule{10mm}{0.30mm} & \rule{10mm}{0.30mm}\\}
+		\end{tabular}	
+	}
+	
+}
+
+% Order sheet structure
+\newcommand{\orderSheet}{
+	\begin{center}
+		\fboxrule=2pt
+		\begin{adjustbox}{minipage=0.9\textwidth,precode=\dbox}
+				\begin{roundCornerPage}[roundcorner=15pt]
+					\begin{minipage}[t][0.7\textwidth][t]{\textwidth}
+						
+							\begin{minipage}[t][0.15\textwidth][t]{\textwidth}
+							\begin{tabularx}{\textwidth}{XXX}
+								{
+									%Table informations
+									\begin{adjustwidth}{-1cm}{}
+										\begin{itemize}
+											\item[] \textbf{\tableNumberT \rule{8mm}{0.35mm}}
+											\item[] \textbf{\numberPersonsT \rule{8mm}{0.35mm}}
+										\end{itemize}
+									\end{adjustwidth}
+								}&{
+									%Restaurant logo
+									\begin{center}
+											\begin{adjustwidth}{\leftMargin}{\rightMargin}
+												\vspace*{\vertical}
+												\begin{tikzpicture}
+													\clip (0,0) circle (1.5cm) node {\logoImage};
+												\end{tikzpicture}
+											\end{adjustwidth}
+									\end{center}
+								}&{
+									% Menu informations
+									\raggedright{\textbf{\Description}}
+								}
+							\end{tabularx}
+							\end{minipage}
+							
+							\vspace*{5mm}
+							\hspace*{-1.5mm}
+							\noindent\tikz\draw[line width=4pt, line cap=round, black!80] 
+							(0,0) -- node[] {} (\linewidth,0);
+							
+							% Startig body part
+							\begin{minipage}{\textwidth}
+								
+									\ifthenelse{\boolean{annotationColumn}}
+									{
+											\begin{tabularx}{\textwidth}{XXX}
+													{
+														\begin{center}
+																\orderPart
+														\end{center}
+													}&{
+														\begin{center}
+															\orderPart
+														\end{center}
+													}&{
+														\begin{center}
+															\orderPart
+														\end{center}
+													}
+											\end{tabularx}
+									}
+									{
+											\begin{tabularx}{\textwidth}{XXXX}
+											{
+												\begin{center}
+													\orderPart
+												\end{center}
+											}&{
+												\begin{center}
+													\orderPart
+												\end{center}
+											}&{
+												\begin{center}
+													\orderPart
+												\end{center}
+											}&{
+												\begin{center}
+													\orderPart
+												\end{center}
+											}
+										\end{tabularx}
+									}
+							\end{minipage}
+					\end{minipage}
+				\end{roundCornerPage}
+		\end{adjustbox}
+	\end{center}
+}
+
+\begin{document}
+	% Remove page number
+	\pagestyle{empty}
+	
+	\title{\textbf{Foglio per le ordinazioni al ristorante cinese/giapponese}}
+	\author{Francesco Rombaldoni}
+	\date{}
+	
+	\maketitle
+	\newpage
+	
+	\AddToShipoutPictureBG*{\backGroundImage}
+	
+%	\orderSheet
+	\vspace*{5mm}
+	%\orderSheet
+	
+	\newpage
+	\newgeometry{top=2cm, bottom=2cm}
+	\vspace*{\fill}
+	% Print license
+	\begin{center}
+		\begin{minipage}{0.8\linewidth}
+			\doclicenseThis
+		\end{minipage}
+	\end{center}
+	
 \end{document}
