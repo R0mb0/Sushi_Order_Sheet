@@ -19,10 +19,10 @@
 5.  Overwrite demo images with yours into the LaTeX document (if necessary change the parameters down the images names to center its).
     1.  Access "Order_Sheet" folder from main page and click on "Order_Sheet.tex".
     2.  Now click on "Edit this file" (the pencil on top right).
-    3.  Overwrite demo backgrund image name with your own (at code line 62).
-    4.  Do the same with the circular logo (at code line 66).
-    5.  If you want the "annotation column" in document, set "annotationColumn" variable (at code line 58) to "true".
-6.  Add description text (at code line 84).
+    3.  Overwrite demo backgrund image name with your own (at code line 66).
+    4.  Do the same with the circular logo (at code line 70).
+    5.  If you want the "annotation column" in document, set "annotationColumn" variable (at code line 62) to "true".
+6.  Add description text (removing ```\lipsum[1][1-5]``` at code line 88).
 7.  Now "Commit changes"!
 8.  Wait 2 minutes, got to "Actions" -> "Compile" -> click on the last one (look at the date on right) -> scroll down the page and click on "artifact file".  
 9.  Done! now you have your suhi order sheet :) .
