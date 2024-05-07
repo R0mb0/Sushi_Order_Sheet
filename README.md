@@ -6,8 +6,8 @@
 
 ## Demo images
 
--   ![With_annotation_column](https://github.com/R0mb0/Sushi_Order_Sheet/blob/main/ReadMe_Images/With_annotation_column.png)  
--   ![Without_annotation_column](https://github.com/R0mb0/Sushi_Order_Sheet/blob/main/ReadMe_Images/Without_annotation_column.png)  
+- ![With_annotation_column](https://github.com/R0mb0/Sushi_Order_Sheet/blob/main/ReadMe_Images/With_annotation_column.png)  
+- ![Without_annotation_column](https://github.com/R0mb0/Sushi_Order_Sheet/blob/main/ReadMe_Images/Without_annotation_column.png)  
 
 ---
 ## How to create your personal sushi order sheet online for free!
@@ -36,7 +36,7 @@
 
 ---
 
-# License
+## License
 
 Shield: [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
 
