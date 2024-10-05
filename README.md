@@ -4,6 +4,10 @@
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/5386565587824f159238f15e7043687c)](https://app.codacy.com/gh/R0mb0/Sushi_Order_Sheet/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 [![Compilation_Test](https://github.com/R0mb0/Sushi_Order_Sheet/actions/workflows/Compilation_Test.yml/badge.svg)](https://github.com/R0mb0/Sushi_Order_Sheet/actions/workflows/Compilation_Test.yml)
 
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/R0mb0/Sushi_Order_Sheet)
+[![Open Source Love svg3](https://badges.frapsoft.com/os/v3/open-source.svg?v=103)](https://github.com/R0mb0/Sushi_Order_Sheet)
+[![Donate](https://img.shields.io/badge/PayPal-Donate%20to%20Author-blue.svg)](http://paypal.me/R0mb0)
+
 ## Demo images
 
 - ![With_annotation_column](https://github.com/R0mb0/Sushi_Order_Sheet/blob/main/ReadMe_Images/With_annotation_column.png)  
